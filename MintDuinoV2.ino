@@ -16,7 +16,9 @@ LiquidCrystal_I2C lcd =
     LiquidCrystal_I2C(0x27, 16, 2);  // takes (address, width, height)
 
 const int buttonPin = 7;
+const int buttonPin2 = 8;
 int buttonState = 0;
+int buttonState2 = 0;
 
 void setup() {
     pinMode(buttonPin, INPUT);
@@ -28,11 +30,10 @@ void setup() {
 
 void loop() {
     buttonState = digitalRead(buttonPin);
+    buttonState2 = digitalRead(buttonPin2);
 
     lcd.setCursor(0, 0);
-    if (buttonState == HIGH) {
-        lcd.print(buttonState);
-    } else {
-        lcd.print(buttonState);
-    }
+    lcd.print(buttonState);
+    lcd.print(", ");
+    lcd.print(buttonState2);
 }
