@@ -19,9 +19,12 @@
 // ............ SDA ---- A4
 // ............ SCL ---- A5
 
-LiquidCrystal_I2C lcd =
-    LiquidCrystal_I2C(0x27, 16, 2);  // takes (address, width, height)
+LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 16, 2);  // takes (address, width, height)
 
+const int buttonPin = 7;
+const int buttonPin2 = 8;
+const int buttonPin3 = 9;
+const int buttonPin4 = 10;
 int buttonState = 0;
 int buttonState2 = 0;
 int buttonState3 = 0;
