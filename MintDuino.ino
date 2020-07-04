@@ -15,6 +15,8 @@
 #include <LiquidCrystal_I2C.h>
 #include <Wire.h>
 
+#include "buttons.h"
+
 /*
  * I2C Wiring Guide:
  * I2C LCD Controller   Arduino
@@ -37,26 +39,6 @@ LiquidCrystal_I2C lcd =
  * The user's thumbs rest on C and D
  */
 
-typedef struct {
-    byte pin;
-    bool state;
-    int timeHeldDown;
-} Button;
-
-typedef struct {
-    Button A;
-    Button B;
-    Button C;
-    Button D;
-    bool allHeldDown;
-    bool oneHeldDown;
-} Buttons;
-
-Button A = {8, 0, 0};
-Button B = {7, 0, 0};
-Button C = {6, 0, 0};
-Button D = {5, 0, 0};
-Buttons btns = {A, B, C, D, 0, 0};
 
 void setup() {
     pinMode(btns.A.pin, INPUT);
