@@ -41,6 +41,7 @@ LiquidCrystal_I2C lcd =
 
 
 void setup() {
+    Buttons btns = updateButtons();
     pinMode(btns.A.pin, INPUT);
     pinMode(btns.B.pin, INPUT);
     pinMode(btns.C.pin, INPUT);
@@ -53,10 +54,7 @@ void setup() {
 }
 
 void loop() {
-    btns.A.state = digitalRead(btns.A.pin);
-    btns.B.state = digitalRead(btns.B.pin);
-    btns.C.state = digitalRead(btns.C.pin);
-    btns.D.state = digitalRead(btns.D.pin);
+    Buttons btns = updateButtons();
 
     lcd.setCursor(0, 1);
     lcd.print(btns.A.state);
