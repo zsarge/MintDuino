@@ -1,30 +1,46 @@
 /*
  * MintDuino V2
  * Goal: Play games on an arduino, in an Altoids tin.
- * Status: Unfinished
+ * Status: Hardware finished, software unfinished
  *
  * This code is released under the MIT license.
  * If a copy of the license is not included,
  * it can be found at https://opensource.org/licenses/MIT
+ *
+ * This code has short diagrams and pictures to help understanding.
+ * A diagram should precede code that deals with its subject matter.
  */
 
 // LiquidCrystal_I2C.h: https://github.com/johnrickman/LiquidCrystal_I2C
-#include <LiquidCrystal_I2C.h>  // Library for LCD
-#include <Wire.h>               // Library for I2C communication
+#include <LiquidCrystal_I2C.h>
+#include <Wire.h>
 
-// I2C Wiring Guide:
-// I2C LCD Controller   Arduino
-// ............ GND ---- GND
-// ............ VCC ---- 5 V
-// ............ SDA ---- A4
-// ............ SCL ---- A5
+/*
+ * I2C Wiring Guide:
+ * I2C LCD Controller   Arduino
+ * ............ GND ---- GND
+ * ............ VCC ---- 5 V
+ * ............ SDA ---- A4
+ * ............ SCL ---- A5
+ */
 
-LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 16, 2);  // takes (address, width, height)
+LiquidCrystal_I2C lcd =
+    LiquidCrystal_I2C(0x27, 16, 2);  // takes (address, width, height)
 
-const int buttonPin = 7;
-const int buttonPin2 = 8;
-const int buttonPin3 = 9;
-const int buttonPin4 = 10;
+/*
+ *  Button layout on device:
+ *  __1____2__
+ *  [ Screen ]
+ *  [_3____4_]
+ *
+ * The user's index fingers rest on 1 and 2
+ * The user's thumbs rest on 3 and 4
+ */
+
+const int buttonPin = 8;
+const int buttonPin2 = 7;
+const int buttonPin3 = 6;
+const int buttonPin4 = 5;
 int buttonState = 0;
 int buttonState2 = 0;
 int buttonState3 = 0;
