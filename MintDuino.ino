@@ -39,7 +39,6 @@ LiquidCrystal_I2C lcd =
  * The user's thumbs rest on C and D
  */
 
-
 void setup() {
     Buttons btns = updateButtons();
     pinMode(btns.A.pin, INPUT);
@@ -56,12 +55,22 @@ void setup() {
 void loop() {
     Buttons btns = updateButtons();
 
+    // Prints all button states
+    lcd.setCursor(0, 0);
+    for (byte i = 0; i < 4; i++) {
+        lcd.print(btns.number[i]->lastState);
+
+        if (i < 3) {
+            lcd.print(", ");
+        }
+    }
+
     lcd.setCursor(0, 1);
-    lcd.print(btns.A.state);
-    lcd.print(", ");
-    lcd.print(btns.B.state);
-    lcd.print(", ");
-    lcd.print(btns.C.state);
-    lcd.print(", ");
-    lcd.print(btns.D.state);
+    for (byte i = 0; i < 4; i++) {
+        lcd.print(btns.number[i]->state);
+
+        if (i < 3) {
+            lcd.print(", ");
+        }
+    }
 }
